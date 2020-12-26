@@ -1,0 +1,6 @@
+#!/usr/local/bin/python3
+import os
+os.popen('/usr/local/bin/python3 /home/www/deploy/server_update.py')
+print('Content-type: text/plain')
+print()
+print('Updated!')
