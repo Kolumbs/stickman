@@ -4,7 +4,7 @@ import os
 
 from githandler import Git
 
-src_loc = '/home/juris/stickman/src/site'
+src_loc = '/home/www/stickman/src/site'
 target = '/home/www/site'
 
 def copy_files(source,target):
