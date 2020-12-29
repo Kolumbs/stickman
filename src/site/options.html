@@ -3,12 +3,9 @@
 		<meta charset="UTF-8"/>
 		<script defer="defer" type="text/javascript">
 			function update(){
-				$.post('/bin/update', function(e){
-					swal({
-						title:'Teams:',
-						text: e,
-					})
-				})
+				alert('performing update');
+				$.post('/bin/update', message); 
+				alert('update done');
 			}
 		</script>
 	</head>
