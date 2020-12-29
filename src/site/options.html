@@ -3,11 +3,11 @@
 		<meta charset="UTF-8"/>
 		<script defer="defer" type="text/javascript">
 			function update(){
-				alert('performing update');
 				const http = new XMLHttpRequest();
 				http.open("POST", '/bin/update');
 				http.send();
-				alert('update done');
+				alert('Atjaunošana ir veikta!');
+				location.href = 'index.html'
 			}
 		</script>
 	</head>
