@@ -4,7 +4,9 @@
 		<script defer="defer" type="text/javascript">
 			function update(){
 				alert('performing update');
-				$.post('/bin/update', message); 
+				const http = new XMLHttpRequest();
+				http.open("POST", '/bin/update');
+				http.send();
 				alert('update done');
 			}
 		</script>
