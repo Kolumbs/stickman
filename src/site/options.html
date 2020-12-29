@@ -1,12 +1,22 @@
 <html>
 	<head>
 		<meta charset="UTF-8"/>
+		<script defer="defer" type="text/javascript">
+			function update(){
+				$.post('/bin/update', function(e){
+					swal({
+						title:'Teams:',
+						text: e,
+					})
+				})
+			}
+		</script>
 	</head>
 	<body>
 		Ābece
 		Šautriņa
 		<form>
-			<button type=button onClick="location.href = '/bin/update';">Atjaunot spēli</button>
+			<button type=button onClick="update();">Atjaunot spēli</button>
 			<p>
 		</form>
 	</body>
