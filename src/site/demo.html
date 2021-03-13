@@ -28,7 +28,8 @@
 			ctx.closePath();
 			ctx.fill();
 		}
-
+		var currentX = event.clientX;
+		var currentY = event.clientY;
 		var lastX = 0, lastY = 0, count = 0;
 		var r = Math.floor(Math.random()*255)+70;
 		var g = Math.floor(Math.random()*255)+70;
