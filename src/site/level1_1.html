@@ -1,4 +1,61 @@
-<html><head><meta charset="utf-8"></meta><title>welp you blew up the world thanks</title></head><body></body></html>  
+<html><head><meta charset="utf-8"></meta><title>welp you blew up the world thanks</title></head><body><canvas id="game" width="1200" height="800" onmousemove="coords(event);">></canvas></body>  
+	<script>
+	var currentX
+	var currentY
+	var height = document.getElementById("game").getAttribute("height")
+	var width = document.getElementById("game").getAttribute("width")
+	function coords(event) {
+		currentX = event.clientX;
+		currentY = event.clientY;
+	}
+	function print(msg) {
+		var m = document.getElementById("logs").innerText;
+		document.getElementById("logs").innerHTML = m + "<br>" + msg;
+	}
+	var el = document.getElementById("game");
+	if (el && el.getContext) {
+		var ctx = el.getContext("2d");
+		var lastX = 0, lastY = 0, count = 0;
+		var r = Math.floor(Math.random()*255)+70;
+		var g = Math.floor(Math.random()*255)+70;
+		var b = Math.floor(Math.random()*255)+70;
+
+		timer1 = setInterval(drawLoop, 16);
+            
+		function drawLines(x, y) {
+ 			ctx.lineWidth = 40;
+ 			ctx.lineCap = "round";
+ 			ctx.beginPath();
+ 			ctx.moveTo(lastX, lastY);
+			ctx.lineTo(x, y);
+ 			ctx.strokeStyle = "rgba(" + r + "," + g + "," + b + ", 1)";
+ 			ctx.stroke();
+		}
+
+		function drawLoop() {
+  			// Clear first
+  			ctx.fillStyle = "rgba(0,0,0,0.05)";
+  			ctx.fillRect(0, 0, width, height);
+ 
+  			// Draw lines
+  			drawLines(currentX, currentY);
+  
+  			// Change up color
+  			if (count++ > 50) 
+  				{
+    				count = 0;
+    				r = Math.floor(Math.random() * 255) + 70;
+    				g = Math.floor(Math.random() * 255) + 70;
+    				b = Math.floor(Math.random() * 255) + 70;
+  				}
+  
+  			// Update coordinates 
+  			lastX = currentX;
+  			lastY = currentY;
+		}
+	}
+	</script>
+</html>
 
 
 
