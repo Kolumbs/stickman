@@ -4,36 +4,26 @@
 		<title>Demo</title>
 	</head>
 	<body>
-		<canvas id="demo" width="320" height="220"/>
-		<canvas id="demo2" width="320" height="220"/>
+		<canvas id="demo" width="1320" height="220" onmousemove="coords(event)">
+		</canvas>
+		<h3 id='logs'/>
 	</body>
 	<script>
-	var el = document.getElementById("demo");
-
-	if (el && el.getContext) {
-		var ctx = el.getContext('2d');
-		if (ctx) {
-			ctx.fillStyle = "#ffffff";
-			ctx.strokeStyle = "#cccccc";
-			ctx.lineWidth = 1;
-			ctx.shadowOffsetX = 5;
-			ctx.shadowOffsetY = 5;
-			ctx.shadowBlur = 4;
-			ctx.shadowColor = "rgba(0,0,0,0.4)";
-			ctx.strokeRect(10,10,300,200);
-			ctx.fillRect(10,10,300,200);
-			ctx.shadowColor = "rgba(0,0,0,0)";
-			ctx.beginPath();
-			ctx.fillStyle = "#d60818";
-			ctx.arc(160,107,60,0,Math.PI*2,false);
-			ctx.closePath();
-			ctx.fill();
-		}
+	var currentX
+	var currentY
+	var height = document.getElementById("demo").getAttribute("height")
+	var width = document.getElementById("demo").getAttribute("width")
+	function coords(event) {
+		currentX = event.clientX;
+		currentY = event.clientY;
 	}
-	var el2 = document.getElementById("demo2");
-	if (el2 && el2.getContext) {
-		var currentX = event.clientX;
-		var currentY = event.clientY;
+	function print(msg) {
+		var m = document.getElementById("logs").innerText;
+		document.getElementById("logs").innerHTML = m + "<br>" + msg;
+	}
+	var el = document.getElementById("demo");
+	if (el && el.getContext) {
+		var ctx = el.getContext("2d");
 		var lastX = 0, lastY = 0, count = 0;
 		var r = Math.floor(Math.random()*255)+70;
 		var g = Math.floor(Math.random()*255)+70;
@@ -52,10 +42,9 @@
 		}
 
 		function drawLoop() {
-			
   			// Clear first
   			ctx.fillStyle = "rgba(0,0,0,0.05)";
-  			ctx.fillRect(0, 0, WIDTH, HEIGHT);
+  			ctx.fillRect(0, 0, width, height);
  
   			// Draw lines
   			drawLines(currentX, currentY);
@@ -74,5 +63,6 @@
   			lastY = currentY;
 		}
 	}
+	test();
 	</script>
 </html>
