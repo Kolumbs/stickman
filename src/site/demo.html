@@ -5,6 +5,7 @@
 	</head>
 	<body>
 		<canvas id="demo" width="320" height="220"/>
+		<canvas id="demo2" width="320" height="220"/>
 	</body>
 	<script>
 	var el = document.getElementById("demo");
@@ -28,6 +29,9 @@
 			ctx.closePath();
 			ctx.fill();
 		}
+	}
+	var el2 = document.getElementById("demo2");
+	if (el2 && el2.getContext) {
 		var currentX = event.clientX;
 		var currentY = event.clientY;
 		var lastX = 0, lastY = 0, count = 0;
@@ -37,8 +41,7 @@
 
 		timer1 = setInterval(drawLoop, 16);
             
-		function drawLines(x, y) 
-			{
+		function drawLines(x, y) {
  			ctx.lineWidth = 40;
  			ctx.lineCap = "round";
  			ctx.beginPath();
@@ -46,10 +49,10 @@
 			ctx.lineTo(x, y);
  			ctx.strokeStyle = "rgba(" + r + "," + g + "," + b + ", 1)";
  			ctx.stroke();
-			}
+		}
 
-		function drawLoop() 
-			{
+		function drawLoop() {
+			
   			// Clear first
   			ctx.fillStyle = "rgba(0,0,0,0.05)";
   			ctx.fillRect(0, 0, WIDTH, HEIGHT);
@@ -69,8 +72,7 @@
   			// Update coordinates 
   			lastX = currentX;
   			lastY = currentY;
-			}
+		}
 	}
-            
 	</script>
 </html>
