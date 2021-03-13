@@ -10,24 +10,66 @@
 	var el = document.getElementById("demo");
 
 	if (el && el.getContext) {
-		var context = el.getContext('2d');
-		if (context) {
-			context.fillStyle = "#ffffff";
-			context.strokeStyle = "#cccccc";
-			context.lineWidth = 1;
-			context.shadowOffsetX = 5;
-			context.shadowOffsetY = 5;
-			context.shadowBlur = 4;
-			context.shadowColor = "rgba(0,0,0,0.4)";
-			context.strokeRect(10,10,300,200);
-			context.fillRect(10,10,300,200);
-			context.shadowColor = "rgba(0,0,0,0)";
-			context.beginPath();
-			context.fillStyle = "#d60818";
-			context.arc(160,107,60,0,Math.PI*2,false);
-			context.closePath();
-			context.fill();
+		var ctx = el.getContext('2d');
+		if (ctx) {
+			ctx.fillStyle = "#ffffff";
+			ctx.strokeStyle = "#cccccc";
+			ctx.lineWidth = 1;
+			ctx.shadowOffsetX = 5;
+			ctx.shadowOffsetY = 5;
+			ctx.shadowBlur = 4;
+			ctx.shadowColor = "rgba(0,0,0,0.4)";
+			ctx.strokeRect(10,10,300,200);
+			ctx.fillRect(10,10,300,200);
+			ctx.shadowColor = "rgba(0,0,0,0)";
+			ctx.beginPath();
+			ctx.fillStyle = "#d60818";
+			ctx.arc(160,107,60,0,Math.PI*2,false);
+			ctx.closePath();
+			ctx.fill();
 		}
 	}
+
+		var lastX = 0, lastY = 0, count = 0;
+		var r = Math.floor(Math.random()*255)+70;
+		var g = Math.floor(Math.random()*255)+70;
+		var b = Math.floor(Math.random()*255)+70;
+
+		timer1 = setInterval(drawLoop, 16);
+            
+		function drawLines(x, y) 
+			{
+ 			ctx.lineWidth = 40;
+ 			ctx.lineCap = "round";
+ 			ctx.beginPath();
+ 			ctx.moveTo(lastX, lastY);
+			ctx.lineTo(x, y);
+ 			ctx.strokeStyle = "rgba(" + r + "," + g + "," + b + ", 1)";
+ 			ctx.stroke();
+			}
+
+		function drawLoop() 
+			{
+  			// Clear first
+  			ctx.fillStyle = "rgba(0,0,0,0.05)";
+  			ctx.fillRect(0, 0, WIDTH, HEIGHT);
+ 
+  			// Draw lines
+  			drawLines(currentX, currentY);
+  
+  			// Change up color
+  			if (count++ > 50) 
+  				{
+    				count = 0;
+    				r = Math.floor(Math.random() * 255) + 70;
+    				g = Math.floor(Math.random() * 255) + 70;
+    				b = Math.floor(Math.random() * 255) + 70;
+  				}
+  
+  			// Update coordinates 
+  			lastX = currentX;
+  			lastY = currentY;
+			}
+            
 	</script>
 </html>
