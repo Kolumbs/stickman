@@ -3,3 +3,4 @@ import os
 print('Content-type: text/html')
 os.popen('/usr/local/bin/python3 /home/www/stickman/src/game/game.py')
 print()
+print('<html><body><h1>Spēle sākas</h1></body></html>')
